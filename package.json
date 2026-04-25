@@ -1,0 +1,30 @@
+{
+  "name": "learn",
+  "version": "1.0.0",
+  "description": "This is Namaste React by Akshay Saini.",
+  "keywords": [],
+  "homepage": "https://github.com/CRitik100/Namaskaram-React#readme",
+  "bugs": {
+    "url": "https://github.com/CRitik100/Namaskaram-React/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CRitik100/Namaskaram-React.git"
+  },
+  "license": "ISC",
+  "author": "Ritik Chaurasiya",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  },
+  "browserslist": [
+    "last 2 versions"    
+  ]
+}
