@@ -1,0 +1,43 @@
+#root{
+    color: blue;
+}
+.titile{
+    color: red;
+}
+.heading{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+}
+#searchBarBox{
+    border: 3px solid lightblue;
+    width: 25%;
+    height: 30px;
+    border-radius: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+}
+#searchIcon{
+    width: 5%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+}
+#searchBar{
+    border:  none;
+    outline: none;
+
+}
+#searchBar::placeholder{
+    color: gray;
+    font-size: 14px;
+}
+#searchButton{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: gray;
+}
