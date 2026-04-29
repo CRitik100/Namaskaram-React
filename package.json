@@ -15,7 +15,7 @@
   "author": "Ritik Chaurasiya",
   "type": "commonjs",
   "scripts": {
-    "start": "parcel index.html",
+    "start": "parcel learn/index.html",
     "build": "parcel build index.html",
     "test": "jest"
   },
