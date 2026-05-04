@@ -23,6 +23,8 @@
 }
 #searchContainer{
     display: flex;
+    /* align-items: center; */
+    position: relative;
     justify-content: center;
     gap: 20px;
 }
@@ -106,4 +108,20 @@
     font-weight: 500;
     margin-top: 5px;
     text-align: center;
+}
+#filterButton{
+    height: 30px;
+    font-size: 17px;
+    color: white;
+    border: none;
+    border-radius: 1rem;
+    background-color: darkorange;
+    cursor: pointer;
+    padding: 7px;
+    position: absolute;
+    right: 20px;
+}
+#filterButton:active {
+  background-color: lightsalmon;
+  transition: 100ms;
 }

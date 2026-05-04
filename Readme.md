@@ -18,3 +18,7 @@
 13. Tree Shaking -> Remove Unused code
 14. Support HTTPS as well
 15. different Dev and production bundle
+
+
+###
+Whenever the state variable update, React Rerender this React Component.
