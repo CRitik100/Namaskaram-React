@@ -21,6 +21,22 @@
     font-weight: 500;
     cursor: pointer;
 }
+.loginComponent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#loginButton{
+    width: 80px;
+    height: 30px;
+    font-size: 17px;
+    color: white;
+    border: none;
+    border-radius: 1rem;
+    background-color: darkorange;
+    cursor: pointer;
+}
+
 #searchContainer{
     display: flex;
     /* align-items: center; */
@@ -61,6 +77,21 @@
 #searchButton:active {
   background-color: lightsalmon;
   transition: 100ms;
+}
+.shimmer-container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 5rem;
+    align-items: start;
+    padding: 7rem;
+
+}
+.shimmer-card{
+    width: 250px;
+    height: 250px;
+    background-color: lightgray;
+    border-radius: 2rem;
 }
 #restrauntContainer{
     padding: 7rem;
