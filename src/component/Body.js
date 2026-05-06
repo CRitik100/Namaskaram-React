@@ -20,7 +20,7 @@ const SearchContainer = (props) => {
         id="searchButton"
         onClick={() => {
           const searchedData = totalRestaurant.filter((data) =>
-            data.card.card.info.name
+            data?.info?.name
               .toLowerCase()
               .includes(searchText.toLowerCase()),
           );
@@ -33,7 +33,7 @@ const SearchContainer = (props) => {
         id="filterButton"
         onClick={() => {
           const filteredData = totalRestaurant.filter(
-            (data) => data?.card?.card?.info?.avgRatingString > 4.2,
+            (data) => data?.info?.avgRatingString > 4.2,
           );
           setRestaurantData(filteredData);
         }}
@@ -47,7 +47,7 @@ const SearchContainer = (props) => {
 const RestrauntCard = (props) => {
   const { restaurant } = props;
   const { name, cuisines, avgRatingString, cloudinaryImageId } =
-    restaurant?.card?.card?.info;
+    restaurant?.info;
   return (
     <div className="restrauntCard">
       <img
@@ -69,7 +69,7 @@ const RestrauntContainer = (props) => {
   return (
     <div id="restrauntContainer">
       {restaurantData.map((data) => (
-        <RestrauntCard key={data.card.card.info.id} restaurant={data} />
+        <RestrauntCard key={data?.info?.id} restaurant={data} />
       ))}
     </div>
   );
@@ -80,9 +80,6 @@ const Body = () => {
   const [totalRestaurant, setTotalRestaurant] = useState([]);
   // Whenever state variable update, react trigger the reconcillation cycle(Re-render the component)
 
-  console.log("Total Restaurant : ", totalRestaurant);
-  console.log("Visible Restaurant : ", restaurantData);
-
   useEffect(() => {
     console.log("Use Effect called...");
     fetchData();
@@ -90,14 +87,14 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0975711&lng=72.90323699999999&collection=83634&tags=layout_CCS_SouthIndian&sortBy=&filters=&type=rcv2&offset=0&page_type=null",
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0975711&lng=72.90323699999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
     );
     const json = await data.json();
-    const desiredData = json?.data?.cards.filter(
+    const desiredData = (json?.data?.cards.find(
       (data) =>
-        data?.card?.card?.["@type"] ===
-        "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
-    );
+        data?.card?.card?.["id"] ===
+        "top_brands_for_you"
+    ))?.card?.card?.gridElements?.infoWithStyle?.restaurants ?? [];
     console.log("Data received from API => ", desiredData);
     setTotalRestaurant(desiredData);
     setRestaurantData(desiredData);
