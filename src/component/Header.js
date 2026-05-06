@@ -22,7 +22,7 @@ const NavItemsComponent = () => {
   );
 };
 
-const LoginComponent = () => {    
+const LoginComponent = () => {
   const [button_name, setButtonName] = useState("Login");
   return (
     <div className="loginComponent">
