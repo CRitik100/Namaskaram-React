@@ -22,3 +22,9 @@
 
 ###
 Whenever the state variable update, React Rerender this React Component.
+
+
+###
+ In web application there are 2 types of Routing
+ - Client Side Routing --> (All the components are already loaded intially, there is no need to load when routing is happening.)
+ - Server Side Routing -->(When we route the page, it load the page from the server.)

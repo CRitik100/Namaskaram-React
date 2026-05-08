@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { COMPANY_LOGO_URL, CART_LOGO_URL } from "../utils/constant";
+import { Link } from "react-router-dom";
 
 const LogoComponent = () => {
   return (
@@ -13,9 +14,15 @@ const NavItemsComponent = () => {
   return (
     <div className="navComponent">
       <ul id="navItems">
-        <li id="links">Home</li>
-        <li id="links">About Us</li>
-        <li id="links">Contact Us</li>
+        <li id="links">
+          <Link to={"/"}>Home</Link>
+        </li>
+        <li id="links">
+          <Link to={"/about"}>About Us</Link>
+        </li>
+        <li id="links">
+          <Link to="/contact">Contact Us</Link>
+        </li>
         <img id="cart" src={CART_LOGO_URL} alt="cart" />
       </ul>
     </div>

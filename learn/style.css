@@ -1,3 +1,8 @@
+.mainContainer{
+  background-color: beige;
+  padding: 1rem;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -5,9 +10,12 @@
 
 #logo {
   width: 150px;
+  border-radius: 7rem;
 }
 #cart {
   width: 100px;
+  border-radius: 7rem;
+
 }
 #navItems {
   display: flex;
@@ -154,4 +162,49 @@
 #filterButton:active {
   background-color: lightsalmon;
   transition: 100ms;
+}
+.errorComponent{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  color: green;
+  height: 46rem;
+  position: relative;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+#soilImg{
+  width: 80%;
+  border-radius: 2rem;
+  position: absolute;
+  z-index: 1;
+}
+.errorDetails{
+  position: absolute;
+  z-index: 2;
+  color: white;
+  font-weight: bolder;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#homePageButton{
+  /* width: 80px; */
+  height: 30px;
+  font-size: 17px;
+  color: white;
+  border: none;
+  border-radius: 1rem;
+  background-color: brown;
+  cursor: pointer;
+}
+#homePageButton:active {
+  background-color: lightcoral;
+  transition: 100ms;
+}
+#errorMssg{
+  font-size: medium;
 }
