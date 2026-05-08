@@ -9,3 +9,5 @@ export const CDN_URL =
 
 export const SOIL_IMG_URL =
   "https://images.consciousplanet.org/save-soil/_next/static/media/404.3cd8f96d.jpg?auto=format&fit=max&w=3840";
+
+export const MENU_API = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.0975711&lng=72.90323699999999&restaurantId=";

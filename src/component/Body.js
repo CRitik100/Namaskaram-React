@@ -1,6 +1,7 @@
 import { CDN_URL } from "../utils/constant";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const SearchContainer = (props) => {
   const { totalRestaurant, setRestaurantData } = props;
@@ -20,9 +21,7 @@ const SearchContainer = (props) => {
         id="searchButton"
         onClick={() => {
           const searchedData = totalRestaurant.filter((data) =>
-            data?.info?.name
-              .toLowerCase()
-              .includes(searchText.toLowerCase()),
+            data?.info?.name.toLowerCase().includes(searchText.toLowerCase()),
           );
           setRestaurantData(searchedData);
         }}
@@ -69,7 +68,15 @@ const RestrauntContainer = (props) => {
   return (
     <div id="restrauntContainer">
       {restaurantData.map((data) => (
-        <RestrauntCard key={data?.info?.id} restaurant={data} />
+        <Link
+          key={data?.info?.id}
+          to={"/restraunt/" + data?.info?.id}
+          className="restrauntLink"
+        >
+          <div>
+            <RestrauntCard restaurant={data} />
+          </div>
+        </Link>
       ))}
     </div>
   );
@@ -79,7 +86,6 @@ const Body = () => {
   const [restaurantData, setRestaurantData] = useState([]);
   const [totalRestaurant, setTotalRestaurant] = useState([]);
   // Whenever state variable update, react trigger the reconcillation cycle(Re-render the component)
-
   useEffect(() => {
     console.log("Use Effect called...");
     fetchData();
@@ -90,11 +96,10 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0975711&lng=72.90323699999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
     );
     const json = await data.json();
-    const desiredData = (json?.data?.cards.find(
-      (data) =>
-        data?.card?.card?.["id"] ===
-        "top_brands_for_you"
-    ))?.card?.card?.gridElements?.infoWithStyle?.restaurants ?? [];
+    const desiredData =
+      json?.data?.cards.find(
+        (data) => data?.card?.card?.["id"] === "top_brands_for_you",
+      )?.card?.card?.gridElements?.infoWithStyle?.restaurants ?? [];
     console.log("Data received from API => ", desiredData);
     setTotalRestaurant(desiredData);
     setRestaurantData(desiredData);
