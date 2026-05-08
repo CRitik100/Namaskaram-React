@@ -1,37 +1,72 @@
 import { useState, useEffect } from "react";
+import mockRestData from "../utils/mockMenuData";
+import { MENU_API } from "../utils/constant";
+import { useParams } from "react-router-dom";
+
+const MenuItem = (props) => {
+  const { menuItem } = props;
+  const { name, imageId, description, defaultPrice } = menuItem?.card?.info;
+  return (
+    <div className="item">
+      <div id="itemDetails">
+        <div id="nameOfItem">{name}</div>
+        <div id="costOfItem">Cost : {defaultPrice / 100}</div>
+        <div id="descOfItem">{description}</div>
+      </div>
+      <img
+        id="imageOfItem"
+        src={
+          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/" +
+          imageId
+        }
+      ></img>
+    </div>
+  );
+};
+
+const ListOfMenu = (props) => {
+  const { optionsAvailable } = props;
+  return (
+    <div className="options">
+      {optionsAvailable.map((item) => (
+        <MenuItem key={item?.card?.info?.id} menuItem={item} />
+      ))}
+    </div>
+  );
+};
 
 const RestaurantMenu = () => {
   const [restDetail, setRestDetail] = useState([]);
+  const [restName, setRestName] = useState("Loading..!!");
+
+  const { resId } = useParams();
+
+  const fetchRestrauMenu = async () => {
+    const response = await fetch(MENU_API + resId);
+
+    const data = mockRestData; // As API is not working, using mock data for development purpose
+
+    const filteredData = data?.data?.cards
+      .find((card) => card?.groupedCard)
+      ?.groupedCard?.cardGroupMap?.REGULAR?.cards.find(
+        (item) => item?.card?.card?.title === "Recommended",
+      )?.card?.card?.itemCards;
+
+    console.log("Available Menu:", data);
+
+    setRestName(data?.data?.cards[0]?.card?.card?.text);
+    setRestDetail(filteredData);
+  };
 
   useEffect(() => {
     console.log("Use Effect from Restraunt");
     fetchRestrauMenu();
   }, []);
 
-  const resId = "769502";
-
-  const fetchRestrauMenu = async () => {
-      const response = await fetch(
-        `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.0975711&lng=72.90323699999999&restaurantId=733190&catalog_qa=undefined&submitAction=ENTER`,
-      );
-
-      const data = response.json();
-      
-      console.log("menu data:", data);
-
-      // setRestDetail(data);
-  };
-
   return (
     <div className="restaurantMenu">
-      <div id="nameOfRest">Name Of Restraunt</div>
-      <h3>Menu:</h3>
-      <ul>
-        <li className="item">1</li>
-        <li className="item">2</li>
-        <li className="item">3</li>
-        <li className="item">4</li>
-      </ul>
+      <h1>{restName + ", Presents to you"}</h1>
+      {<ListOfMenu optionsAvailable={restDetail} />}
     </div>
   );
 };

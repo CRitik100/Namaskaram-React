@@ -208,3 +208,29 @@
 #errorMssg{
   font-size: medium;
 }
+.item{
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+}
+#itemDetails{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-size: 18px;
+  font-weight: 500;
+}
+#costOfItem{
+  font-size: 18px;
+  font-weight: 500;
+  color: darkorange;
+}
+#imageOfItem{
+  width: 156px;
+  height: 144px;
+  border-radius: 2rem;
+}
+.restrauntLink{
+  text-decoration: none;
+  color: inherit;
+}
