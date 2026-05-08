@@ -6,3 +6,6 @@ export const CART_LOGO_URL =
 
 export const CDN_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
+
+export const SOIL_IMG_URL =
+  "https://images.consciousplanet.org/save-soil/_next/static/media/404.3cd8f96d.jpg?auto=format&fit=max&w=3840";
