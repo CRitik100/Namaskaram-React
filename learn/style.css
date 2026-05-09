@@ -1,4 +1,4 @@
-.mainContainer{
+.mainContainer {
   background-color: beige;
   padding: 1rem;
 }
@@ -15,7 +15,6 @@
 #cart {
   width: 100px;
   border-radius: 7rem;
-
 }
 #navItems {
   display: flex;
@@ -163,7 +162,7 @@
   background-color: lightsalmon;
   transition: 100ms;
 }
-.errorComponent{
+.errorComponent {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -172,16 +171,17 @@
   color: green;
   height: 46rem;
   position: relative;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
+  font-family:
+    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-#soilImg{
+#soilImg {
   width: 80%;
   border-radius: 2rem;
   position: absolute;
   z-index: 1;
 }
-.errorDetails{
+.errorDetails {
   position: absolute;
   z-index: 2;
   color: white;
@@ -191,7 +191,7 @@
   justify-content: center;
   align-items: center;
 }
-#homePageButton{
+#homePageButton {
   /* width: 80px; */
   height: 30px;
   font-size: 17px;
@@ -205,32 +205,56 @@
   background-color: lightcoral;
   transition: 100ms;
 }
-#errorMssg{
+#errorMssg {
   font-size: medium;
 }
-.item{
+.item {
   display: flex;
   flex-direction: row;
   padding: 1rem;
+  justify-content: space-between;
 }
-#itemDetails{
+#itemDetails {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   font-size: 18px;
   font-weight: 500;
 }
-#costOfItem{
+#costOfItem {
   font-size: 18px;
   font-weight: 500;
   color: darkorange;
 }
-#imageOfItem{
+#imageOfItem {
   width: 156px;
   height: 144px;
   border-radius: 2rem;
 }
-.restrauntLink{
+.restrauntLink {
   text-decoration: none;
   color: inherit;
+}
+.user-details{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.user-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  width: 300px;
+  background: lightcoral;
+  padding: 1rem;
+  border-radius: 2rem;
+  margin : 1rem;
+}
+.user-card:hover {
+  box-shadow: 0px 0px 10px gray;
+  transition: 400ms;
+  transform: scale(0.8);
 }
