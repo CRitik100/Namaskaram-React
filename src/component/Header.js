@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { COMPANY_LOGO_URL, CART_LOGO_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
+import useInternetStatus from "../utils/useInternetStatus";
 
 const LogoComponent = () => {
   return (
@@ -23,6 +24,9 @@ const NavItemsComponent = () => {
         <li id="links">
           <Link to="/contact">Contact Us</Link>
         </li>
+        <li id="links">
+          <Link to="/grocery">Grocery</Link>
+        </li>
         <img id="cart" src={CART_LOGO_URL} alt="cart" />
       </ul>
     </div>
@@ -33,6 +37,9 @@ const LoginComponent = () => {
   const [button_name, setButtonName] = useState("Login");
   return (
     <div className="loginComponent">
+      <div id="onlineStatus">
+        {useInternetStatus() ? "🟢" : "🔴"}
+      </div>
       <button
         id="loginButton"
         onClick={() => {

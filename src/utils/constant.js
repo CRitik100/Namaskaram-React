@@ -10,4 +10,11 @@ export const CDN_URL =
 export const SOIL_IMG_URL =
   "https://images.consciousplanet.org/save-soil/_next/static/media/404.3cd8f96d.jpg?auto=format&fit=max&w=3840";
 
-export const MENU_API = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.0975711&lng=72.90323699999999&restaurantId=";
+export const RESTRO_INFO_API =
+  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0975711&lng=72.90323699999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+
+export const RESTRO_MENU_IMG_URL =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/";
+
+export const MENU_API =
+  "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.0975711&lng=72.90323699999999&restaurantId=";
