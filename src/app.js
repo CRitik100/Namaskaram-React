@@ -1,12 +1,15 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./component/Header";
 import Body from "./component/Body";
 import Footer from "./component/Footer";
 import About from "./component/About";
-import Contact from "./component/Contact";
 import RestaurantMenu from "./component/RestrauntMenu";
 import Error from "./component/Error";
+import useInternetStatus from "./utils/useInternetStatus";
+import NoInternet from "./component/NoInternt";
+// import Contact from "./component/Contact";
+// import Grocery from "./component/grocery";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 /*
@@ -28,6 +31,13 @@ mainContainer
         -Address
         -Contact
 */
+
+/*
+ * Chunking, code bundling, lazy loading, dynamic import, code splitting, on demand loading.--> For optimizing the code and improving the performance of the application.
+ */
+
+const Grocery = lazy(() => import("./component/grocery"));
+const Contact = lazy(() => import("./component/Contact"));
 
 const MainContainer = () => {
   return (
@@ -54,11 +64,23 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/contact",
-        element: <Contact />,
+        element: (
+          <Suspense>
+            <Contact />
+          </Suspense>
+        ),
       },
       {
         path: "/restraunt/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Grocery />
+          </Suspense>
+        ),
       },
     ],
     errorElement: <Error />,
