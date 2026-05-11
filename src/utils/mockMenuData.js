@@ -1,4 +1,4 @@
-const mockRestData = {
+const mockMenuData = {
   statusCode: 0,
   data: {
     statusMessage: "done successfully",
@@ -85766,4 +85766,4 @@ const mockRestData = {
   csrfToken: "runI5ItTtrBg-3ye7ZZWoQiEw8EHIA1pi8D0fZa8",
 };
 
-export default mockRestData;
+export default mockMenuData;
