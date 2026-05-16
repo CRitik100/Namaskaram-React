@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import UserContext from "../utils/UserContext";
 
 const SearchBar = (props) => {
   const { totalRestaurant, setRestaurantData } = props;
   const [searchText, setSearchText] = useState("");
+  const data = useContext(UserContext);
+  console.log("Use Context : " + data.loggedInUser);
 
   return (
-    <div id="SearchContainer">
+    <div className="flex gap-5 ">
       <input
-        id="searchInput"
+        className="bg-amber-500 w-[35ch] p-3 rounded-4xl outline-none"
         type="text"
         placeholder="Search for restaurant, cuisine or a dish"
         value={searchText}
@@ -16,7 +19,7 @@ const SearchBar = (props) => {
         }}
       />
       <button
-        id="searchButton"
+        className="p-3 rounded-4xl bg-amber-500 w-27 text-fuchsia-100 font-semibold"
         onClick={() => {
           const searchedData = totalRestaurant.filter((data) =>
             data?.info?.name.toLowerCase().includes(searchText.toLowerCase()),
@@ -26,6 +29,7 @@ const SearchBar = (props) => {
       >
         Search
       </button>
+      <div>{data.loggedInUser}</div>
     </div>
   );
 };

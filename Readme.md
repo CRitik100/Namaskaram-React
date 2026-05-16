@@ -21,10 +21,22 @@
 
 
 ###
-Whenever the state variable update, React Rerender this React Component.
+Whenever state variable update, react trigger the reconcillation cycle(Re-render the component)
 
 
 ###
  In web application there are 2 types of Routing
  - Client Side Routing --> (All the components are already loaded intially, there is no need to load when routing is happening.)
  - Server Side Routing -->(When we route the page, it load the page from the server.)
+
+
+###
+Different Ways to add CSS
+1. Normal Ways
+2. SCSS and SASS
+3. Style Component
+4. Bootstap
+5. Chakra
+6. material Ui
+7. And Design
+8. Tailwind CSS
