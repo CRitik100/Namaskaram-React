@@ -1,47 +1,37 @@
+import { useState, createContext } from "react";
 import { useParams } from "react-router-dom";
 import useRestroMenuInfo from "../utils/useRestroMenuInfo";
-import { RESTRO_MENU_IMG_URL } from "../utils/constant";
-
-const MenuItem = (props) => {
-  const { menuItem } = props;
-  const { name, imageId, description, defaultPrice } = menuItem?.card?.info;
-  return (
-    <div className="item">
-      <div id="itemDetails">
-        <div id="nameOfItem">{name}</div>
-        <div id="costOfItem">Cost : {defaultPrice / 100}</div>
-        <div id="descOfItem">{description}</div>
-      </div>
-      <img
-        id="imageOfItem"
-        src={RESTRO_MENU_IMG_URL + imageId}
-      ></img>
-    </div>
-  );
-};
-
-const ListOfMenu = (props) => {
-  const { optionsAvailable } = props;
-  return (
-    <div className="options">
-      {optionsAvailable.map((item) => (
-        <MenuItem key={item?.card?.info?.id} menuItem={item} />
-      ))}
-    </div>
-  );
-};
+import ListOfMenu from "./ListOfMenu";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-  const { restDetails, restName } = useRestroMenuInfo(resId);
-  
+  const { restrauMenuDetails, setRestrauMenuDetails, restName } =
+    useRestroMenuInfo(resId);
+  const [desiredIndex, setDesiredIndex] = useState(null);
+
   console.log("Restaurant Name:", restName);
-  console.log("Restaurant Details:", restDetails);
+  console.log("Restaurant Details:", restrauMenuDetails);
 
   return (
-    <div className="restaurantMenu">
-      <h1>{restName + ", Presents to you"}</h1>
-      {<ListOfMenu optionsAvailable={restDetails} />}
+    <div className="flex flex-col items-center">
+      <h1 className="text-3xl text-white font-bold p-2 bg-amber-600 rounded-tr-2xl rounded-bl-2xl">
+        {restName + ", Presents to you"}
+      </h1>
+      <div className="flex flex-col gap-2 mt-4">
+        {restrauMenuDetails.map((data, index) => {
+          const actualReqData = data?.card?.card?.itemCards;
+          return (
+            // Controlled Component.
+            <ListOfMenu
+              key={data?.card?.card?.title}
+              category={data?.card?.card?.title}
+              optionsAvailable={actualReqData}
+              accordianStatus={index === desiredIndex && true}
+              clickFunction={(data = index) => setDesiredIndex(data)}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

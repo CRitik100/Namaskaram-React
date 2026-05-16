@@ -1,13 +1,13 @@
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useRestroInfo from "../utils/useRestroInfo";
-import RestrauntCard from "./RestrauntCard";
+import RestrauntCard, { witBestLabelRestrauntCard } from "./RestrauntCard";
 import SearchBar from "./SearchBar";
 import FilterBar from "./FilterBar";
 
 const SearchAndFilterContainer = (props) => {
   return (
-    <div id="searchAndFilter">
+    <div className="flex justify-around">
       <SearchBar {...props} />{" "}
       {/* Spread operator is used to pass all the props to the child component */}
       <FilterBar {...props} />
@@ -15,10 +15,12 @@ const SearchAndFilterContainer = (props) => {
   );
 };
 
+const BestRestrauntCard = witBestLabelRestrauntCard(RestrauntCard); // This is returning a new Component.
+
 const RestrauntContainer = (props) => {
   const { restaurantData } = props;
   return (
-    <div id="restrauntContainer">
+    <div className="flex flex-wrap justify-center  gap-11 mt-11">
       {restaurantData.map((data) => (
         <Link
           key={data?.info?.id}
@@ -26,7 +28,11 @@ const RestrauntContainer = (props) => {
           className="restrauntLink"
         >
           <div>
-            <RestrauntCard restaurant={data} />
+            {data?.info?.avgRating > 4.5 ? (
+              <BestRestrauntCard restaurant={data} />
+            ) : (
+              <RestrauntCard restaurant={data} />
+            )}
           </div>
         </Link>
       ))}
@@ -41,7 +47,7 @@ const Body = () => {
   return restaurantData.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="mainBody">
+    <div className="flex flex-col mt-3 p-2">
       <SearchAndFilterContainer
         totalRestaurant={totalRestaurant}
         setRestaurantData={setRestaurantData}

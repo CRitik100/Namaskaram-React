@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./component/Header";
 import Body from "./component/Body";
@@ -11,6 +11,7 @@ import NoInternet from "./component/NoInternt";
 // import Contact from "./component/Contact";
 // import Grocery from "./component/grocery";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import UserContext from "./utils/UserContext";
 
 /*
 mainContainer
@@ -40,12 +41,22 @@ const Grocery = lazy(() => import("./component/grocery"));
 const Contact = lazy(() => import("./component/Contact"));
 
 const MainContainer = () => {
+  const [userName, setUserName] = useState();
+  useEffect(() => {
+    const data = {
+      name: "Ritik Ch",
+    };
+    setUserName(data.name);
+  }, []);
+
   return (
-    <div className="mainContainer">
-      <Header />
-      <Outlet />
-      <Footer />
-    </div>
+    <UserContext.Provider value={{ loggedInUser: userName }}>
+      <div className="mainContainer p-8 bg-stone-100 font-serif">
+        <Header />
+        <Outlet />
+        <Footer />
+      </div>
+    </UserContext.Provider>
   );
 };
 
