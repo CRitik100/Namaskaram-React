@@ -40,3 +40,15 @@ Different Ways to add CSS
 6. material Ui
 7. And Design
 8. Tailwind CSS
+
+
+###
+Redux ToolKit
+
+- Install @reduxjs/toolkit and react-redux
+- Build our store
+- Connect our store to APP
+- Card Slice
+- Dispach an Action
+- Read the Data using Selector.
+
