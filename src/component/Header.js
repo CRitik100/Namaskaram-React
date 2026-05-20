@@ -2,6 +2,7 @@ import { useState } from "react";
 import { COMPANY_LOGO_URL, CART_LOGO_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
 import useInternetStatus from "../utils/useInternetStatus";
+import { useSelector } from "react-redux";
 
 const LogoComponent = () => {
   return (
@@ -12,6 +13,9 @@ const LogoComponent = () => {
 };
 
 const NavItemsComponent = () => {
+  // Subrscribing to the store and getting the data from the store.
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log("cart items : ", cartItems);
   return (
     <ul className="flex justify-center items-center w-3/4 text-amber-700 font-extrabold font-serif text-xl">
       <li className="px-4">
@@ -26,7 +30,18 @@ const NavItemsComponent = () => {
       <li className="px-4">
         <Link to="/grocery">Grocery</Link>
       </li>
-      <img className="w-19 ml-4 rounded-full" src={CART_LOGO_URL} alt="cart" />
+      <div className="flex relative">
+        <Link to="/cart">
+          <img
+            className="w-19 ml-4 rounded-full"
+            src={CART_LOGO_URL}
+            alt="cart"
+          />
+          <span className="bg-amber-500 w-7 h-7 rounded-full absolute top-0 right-0 text-center text-amber-50">
+            {cartItems.length}
+          </span>
+        </Link>
+      </div>
     </ul>
   );
 };
@@ -34,7 +49,7 @@ const NavItemsComponent = () => {
 const LoginComponent = () => {
   const [button_name, setButtonName] = useState("Login");
   return (
-    <div className="flex items-center" >
+    <div className="flex items-center">
       <div className="p-1">{useInternetStatus() ? "🟢" : "🔴"}</div>
       <button
         className="p-1 font-extrabold  text-amber-700"
