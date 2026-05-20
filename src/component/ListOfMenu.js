@@ -1,9 +1,17 @@
 import { useState } from "react";
 import { RESTRO_MENU_IMG_URL } from "../utils/constant";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
-const MenuItem = (props) => {
+export const MenuItem = (props) => {
   const { menuItem } = props;
   const { name, imageId, description, defaultPrice } = menuItem?.card?.info;
+  const dispatch = useDispatch();
+
+  const handleAddItem = (itemName) => {
+    dispatch(addItem(itemName));
+  };
+
   return (
     <div className="flex justify-between px-2 border-b-4 border-amber-200 pb-2">
       <div id="itemDetails">
@@ -11,10 +19,19 @@ const MenuItem = (props) => {
         <div id="costOfItem">Cost : {defaultPrice / 100}</div>
         {/* <div id="descOfItem">{description}</div> */}
       </div>
-      <img
-        className="w-15 rounded-4xl"
-        src={RESTRO_MENU_IMG_URL + imageId}
-      ></img>
+      <div className="flex flex-col relative mb-6">
+        <img
+          className="w-40 rounded-xl"
+          src={RESTRO_MENU_IMG_URL + imageId}
+        ></img>
+        <button
+          className="text-green-500 w-21 p-1.5 bg-white rounded-xl absolute left-1/4 top-27 font-semibold cursor-pointer shadow-gray-800 hover:bg-gray-200"
+          onClick={() => handleAddItem({menuItem})}
+        >
+          {" "}
+          ADD{" "}
+        </button>
+      </div>
     </div>
   );
 };

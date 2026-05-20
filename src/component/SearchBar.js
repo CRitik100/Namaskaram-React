@@ -29,7 +29,7 @@ const SearchBar = (props) => {
       >
         Search
       </button>
-      <div>{data.loggedInUser}</div>
+      {/* <div>{data.loggedInUser}</div> */}
     </div>
   );
 };

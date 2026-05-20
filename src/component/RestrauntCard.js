@@ -20,7 +20,6 @@ const RestrauntCard = (props) => {
       <div className="flex justify-center items-center flex-wrap">
         <span className="p-2 text-center">{cuisines.join(", ")}</span>
         <span className="text-center">{"*" + avgRatingString}</span>
-        <span>{loggedInUser}</span>
       </div>
     </div>
   );
