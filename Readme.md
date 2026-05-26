@@ -52,3 +52,11 @@ Redux ToolKit
 - Dispach an Action
 - Read the Data using Selector.
 
+
+### Developer Testing
+- Unit Testing
+- Integration Testing
+- e2e Testing
+
+
+
